@@ -17,16 +17,28 @@ namespace Project02.Controllers
         }
 
 
+
         public IActionResult SignUp()
         {
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult Form()
         {
-            return View();
+            return View(new Appointment());
         }
 
-      
+
+        [HttpPost]
+        public IActionResult Form(Appointment appt)
+        {
+
+            return View("/Home/SignUp");
+        }
+
+
+
     }
 }

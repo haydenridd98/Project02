@@ -16,6 +16,17 @@ namespace Project02.Controllers
             return View();
         }
 
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult Form()
+        {
+            return View();
+        }
+
       
     }
 }

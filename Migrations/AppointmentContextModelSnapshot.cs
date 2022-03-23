@@ -44,6 +44,18 @@ namespace Project02.Migrations
                     b.HasKey("AppointmentId");
 
                     b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentId = 1L,
+                            Date = "Mar 22, 2022",
+                            Email = "MichaelScott@gmail.com",
+                            GroupName = "Michael Scott Fun Run for the Cure",
+                            GroupSize = 10,
+                            PhoneNumber = "801-777-8888",
+                            Time = "8 A.M."
+                        });
                 });
 #pragma warning restore 612, 618
         }

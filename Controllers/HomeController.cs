@@ -9,7 +9,12 @@ namespace Project02.Controllers
 {
     public class HomeController : Controller
     {
-       
+        private IAppointmentRepository repo;
+
+        public HomeController(IAppointmentRepository temp)
+        {
+            repo = temp;
+        }
 
         public IActionResult Index()
         {

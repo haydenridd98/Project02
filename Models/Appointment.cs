@@ -22,5 +22,10 @@ namespace Project02.Models
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        
+        public string Time { get; set; }
+
+        public string Date { get; set; }
     }
 }

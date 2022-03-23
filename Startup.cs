@@ -32,6 +32,8 @@ namespace Project02
                 options.UseSqlite(Configuration["ConnectionStrings:AppointmentConnection"]);
             });
 
+            services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

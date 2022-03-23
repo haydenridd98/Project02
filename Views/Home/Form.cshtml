@@ -9,10 +9,11 @@
 <form method="post" asp-controller="Home" asp-action="Form">
 
     <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="AppointmentId" value="@Model.AppointmentId" />
 
     <div class="form-group">
         <label asp-for="Date">Date: </label>
-        <input asp-for="Date" disabled class="form-control" />
+        <input asp-for="Date" disabled class="form-control" value="@Model.Date" />
     </div>
 
     <div class="form-group">
@@ -22,7 +23,7 @@
 
     <div class="form-group">
         <label asp-for="GroupName">Group Name: </label>
-        <input asp-for="GroupName" class="form-control" />
+        <input asp-for="GroupName" value="" class="form-control" />
     </div>
 
     <div class="form-group">

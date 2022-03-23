@@ -42,7 +42,7 @@ namespace Project02.Controllers
         public IActionResult Form(Appointment appt)
         {
 
-            return View("/Home/SignUp");
+            return View("Index", appt);
         }
 
 

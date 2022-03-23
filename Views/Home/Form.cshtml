@@ -10,7 +10,15 @@
 
     <div asp-validation-summary="All" class="text-danger"></div>
 
-    <h4>Ship To</h4>
+    <div class="form-group">
+        <label asp-for="Date">Date: </label>
+        <input asp-for="Date" disabled class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Time">Time: </label>
+        <input asp-for="Time" value="@Model.Time" disabled class="form-control" />
+    </div>
 
     <div class="form-group">
         <label asp-for="GroupName">Group Name: </label>

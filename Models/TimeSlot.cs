@@ -15,5 +15,6 @@ namespace Project02.Models
         [Required]
         public DateTime Start { get; set; }
         public int? AppointmentID { get; set; }
+
     }
 }

@@ -25,7 +25,19 @@ namespace Project02.Models
                 DateTime nextDay = DateTime.Now.Date.AddDays(i);
                 for (int h = 8; h < 21; h++)
                 {
-                    // figure this out
+                    //if ()
+                    //{ 
+                    //    // figure out how to check if the date is already in the model 
+                    //}
+                    //else
+                    {
+                        mb.Entity<TimeSlot>().HasData(
+                            new TimeSlot
+                            {
+                                Start = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, h, 0, 0)
+                            });
+                    }
+
                 }
             }
             mb.Entity<TimeSlot>().HasData(

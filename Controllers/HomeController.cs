@@ -9,11 +9,18 @@ namespace Project02.Controllers
 {
     public class HomeController : Controller
     {
+
         private IAppointmentRepository repo;
 
-        public HomeController(IAppointmentRepository temp)
+
+        private AppointmentContext apptContext { get; set; }
+
+
+
+        public HomeController(IAppointmentRepository temp, AppointmentContext x)
         {
             repo = temp;
+            apptContext = x;
         }
 
         public IActionResult Index()
@@ -37,8 +44,11 @@ namespace Project02.Controllers
         }
 
         [HttpPost]
-        public IActionResult Form()
+        public IActionResult Form(Appointment apptForm)
         {
+
+            apptContext.Add(apptForm);
+            apptContext.SaveChanges();
             return View();
         }
 

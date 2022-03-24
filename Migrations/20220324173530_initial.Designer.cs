@@ -8,7 +8,7 @@ using Project02.Models;
 namespace Project02.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20220324152536_initial")]
+    [Migration("20220324173530_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,16 +47,6 @@ namespace Project02.Migrations
                     b.HasKey("AppointmentId");
 
                     b.ToTable("Appointments");
-
-                    b.HasData(
-                        new
-                        {
-                            AppointmentId = 1L,
-                            Available = false,
-                            Date = "Mar 22, 2022",
-                            GroupSize = 0,
-                            Time = "8 A.M."
-                        });
                 });
 #pragma warning restore 612, 618
         }

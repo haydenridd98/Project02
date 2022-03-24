@@ -65,7 +65,7 @@ namespace Project02
                 endpoints.MapRazorPages();
 
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/Forms/{*catchall", "/Index");
+                endpoints.MapFallbackToPage("/form/{*catchall", "/Index");
             });
 
         }

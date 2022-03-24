@@ -43,6 +43,15 @@ namespace Project02.Controllers
             return View("Form", appt);
         }
 
+        [HttpGet]
+        public IActionResult Appointments()
+        {
+            var appts = repo.Appointments
+                .OrderBy(x => x.Date)
+                .ToList();
+
+            return View(appts);
+        }
 
         [HttpGet]
         public IActionResult Form(int apptId)
@@ -77,7 +86,52 @@ namespace Project02.Controllers
                 return View("Form", apptForm);
             }
         }
-        
 
+
+        [HttpGet]
+        public IActionResult Edit(int appID)
+        {
+            var appt = repo.Appointments.Single(x => x.AppointmentId == appID);
+            ViewBag.AppointmentTime = repo.Appointments.Single(x => x.AppointmentId == appt.AppointmentId);
+
+            return View("Form", appt);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Appointment appt)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.SaveAppointment(appt);
+
+                return RedirectToAction("Appointments");
+            }
+            else 
+            {
+                ViewBag.AppointmentTime = repo.Appointments.Single(x => x.AppointmentId == appt.AppointmentId);
+                return View("Appointments", appt);
+            }
+
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int appID)
+        {
+            var app = repo.Appointments.Single(x => x.AppointmentId == appID);
+
+            return View(app);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Appointment appt)
+        {
+            Appointment editAppt = repo.Appointments.Single(x => x.AppointmentId == appt.AppointmentId);
+            appt.Available = true;
+
+            repo.DeleteAppointment(editAppt);
+
+
+            return View("Index");
+        }
     }
 }

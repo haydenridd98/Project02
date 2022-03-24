@@ -1,6 +1,7 @@
-﻿@page "/Signup"
-
-@inherits OwningComponentBase<ITempleToursRepository>
+﻿@model Project02.Pages.SignupModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
 
 <div class="container">
     <h2>Sign Up for a Tour Below</h2>
@@ -24,7 +25,7 @@
     </thead>
 
     <tbody>
-        @foreach (Appointment a in Appointments)
+        @foreach (var a in Model.Appointments)
         {
             <tr>
                 <td>@a.Start</td>
@@ -42,12 +43,12 @@
                 <td>
                     @if (a.GroupName is null)
                     {
-                        <NavLink class="btn btn-primary" href="@GetFormUrl(a.AppointmentID)">Book</NavLink>
+                        <a class="btn btn-primary" asp-page="form" asp-route-id="@a.AppointmentID">Book</a>
                     }
                     else
                     {
-                        <NavLink class="btn btn-warning" href="@GetFormUrl(a.AppointmentID)">Edit</NavLink>
-                        <NavLink class="btn btn-danger" @onclick="@(x => DeleteAppointment(a))">Delete</NavLink>
+                        <a class="btn btn-warning" asp-page="edit" asp-route-id="@a.AppointmentID">Edit</a>
+                        <a class="btn btn-danger" @onclick="@(DeleteAppointment(a))">Delete</a>
                     }
 
                 </td>
@@ -57,20 +58,3 @@
     </tbody>
 
 </table>
-
-@code {
-    private ITempleToursRepository repo => Service;
-
-    public IEnumerable<Appointment> Appointments { get; set; }
-
-    public void OnGet()
-    {
-        Appointments = repo.Appointments.ToList();
-    }
-    public async Task DeleteAppointment (Appointment a)
-    {
-        repo.DeleteAppointment(a);
-    }
-
-    public string GetFormUrl(long id) => $"/forms/{id}";
-}

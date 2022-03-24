@@ -24,7 +24,11 @@ namespace Project02.Models
 
         public void DeleteAppointment(Appointment a)
         {
-            context.Remove(a);
+            a.GroupName = null;
+            a.GroupSize = 1;
+            a.Email = null;
+            a.Phone = null;
+            context.Update(a);
             context.SaveChanges();
         }
 

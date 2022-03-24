@@ -36,6 +36,8 @@ namespace Project02
 
             services.AddRazorPages();
 
+            services.AddServerSideBlazor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,9 +63,10 @@ namespace Project02
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-            });
 
-         
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/Forms/{*catchall", "/Index");
+            });
 
         }
     }

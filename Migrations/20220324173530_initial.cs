@@ -24,11 +24,6 @@ namespace Project02.Migrations
                 {
                     table.PrimaryKey("PK_Appointments", x => x.AppointmentId);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Appointments",
-                columns: new[] { "AppointmentId", "Available", "Date", "Email", "GroupName", "GroupSize", "PhoneNumber", "Time" },
-                values: new object[] { 1L, false, "Mar 22, 2022", null, null, 0, null, "8 A.M." });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

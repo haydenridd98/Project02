@@ -45,16 +45,6 @@ namespace Project02.Migrations
                     b.HasKey("AppointmentId");
 
                     b.ToTable("Appointments");
-
-                    b.HasData(
-                        new
-                        {
-                            AppointmentId = 1L,
-                            Available = false,
-                            Date = "Mar 22, 2022",
-                            GroupSize = 0,
-                            Time = "8 A.M."
-                        });
                 });
 #pragma warning restore 612, 618
         }

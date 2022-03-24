@@ -24,7 +24,7 @@ namespace Project02.Models
 
         public string Date { get; set; }
         
-        // default available = true, until it gets reserved
+        // default available = 1, until it gets reserved = 0
         public bool Available { get; set; }
 
 

@@ -25,7 +25,6 @@
     <Content Remove="wwwroot\img\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Home\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\img\" />

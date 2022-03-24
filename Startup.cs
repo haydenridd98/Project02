@@ -27,12 +27,12 @@ namespace Project02
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<AppointmentContext>(options =>
+            services.AddDbContext<SignUpContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:AppointmentConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:SignUpConnection"]);
             });
 
-            services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
+            services.AddScoped<ISignUpRepository, EFSignUpRepository>();
 
         }
 
@@ -62,6 +62,37 @@ namespace Project02
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Handle the future
+            using (var context = new SignUpContext())
+            {
+                context.TimeSlots.RemoveRange(context.TimeSlots);
+                DateTime today = DateTime.Today.Date;
+                DateTime target = DateTime.Today.AddDays(90).Date;
+                int[] hours = new int[] { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+
+                while (today.Date != target.Date)
+                {
+                    foreach (var hour in hours)
+                    {
+                        TimeSlot temp = new TimeSlot();
+                        temp.Start = today.AddHours(hour);
+                        Appointment tempAppointment = context.Appointments.Where(a => a.TimeSlot == temp.Start).FirstOrDefault();
+                        if (tempAppointment == null)
+                        {
+                            temp.Open = true;
+                        }
+                        else
+                        {
+                            temp.Open = false;
+                        }
+                        context.Add(temp);
+                    }
+                    today = today.AddDays(1);
+                    context.SaveChanges();
+                }
+            }
+
         }
     }
 }

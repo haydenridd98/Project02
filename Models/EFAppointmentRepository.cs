@@ -16,5 +16,19 @@ namespace Project02.Models
         }
 
         public IQueryable<Appointment> Appointments => context.Appointments;
+
+
+        public void DeleteAppointment(Appointment a)
+        {
+            context.Remove(a);
+            context.SaveChanges();
+        }
+
+        public void SaveAppointment(Appointment a)
+        {
+            context.Update(a);
+            context.SaveChanges();
+        }
+
     }
 }

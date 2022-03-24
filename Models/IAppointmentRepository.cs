@@ -9,5 +9,7 @@ namespace Project02.Models
     {
         IQueryable<Appointment> Appointments { get; }
 
+        public void SaveAppointment(Appointment a);
+        public void DeleteAppointment(Appointment a);
     }
 }

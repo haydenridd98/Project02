@@ -43,13 +43,31 @@ namespace Project02.Controllers
             return View("Form", appt);
         }
 
+
+        [HttpGet]
+        public IActionResult Form(int apptId)
+        {
+            var appt = repo.Appointments.Single(x => x.AppointmentId == apptId);
+            ViewBag.AppointmentTime = repo.Appointments.Single(x => x.AppointmentId == appt.AppointmentId);
+
+            return View("Form", appt);
+        }
+
         [HttpPost]
         public IActionResult Form(Appointment apptForm)
         {
 
-            apptContext.Add(apptForm);
-            apptContext.SaveChanges();
-            return View();
+            if (ModelState.IsValid)
+            {
+                repo.SaveAppointment(apptForm);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.AppointmentTime = repo.Appointments.Single(x => x.AppointmentId == apptForm.AppointmentId);
+                return View("Index");
+            }
         }
 
     }

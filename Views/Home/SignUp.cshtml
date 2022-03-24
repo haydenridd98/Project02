@@ -7,9 +7,13 @@
 <h1>Sign up for a time slot!</h1>
 
 
-<form method="get" asp-controller="Home" asp-action="Form">
-    <!--<input type="hidden" asp-for="AppointmentId" value="Model.AppointmentId" />-->
-    <input type="submit" class="btn btn-primary" style="width:100%" value="8 A.M.">
+<form method="post" asp-controller="Home" asp-action="SignUp">
+
+    <input type="hidden" asp-for="AppointmentId" value="1" />
+    <input type="hidden" asp-for="Time" value="8 A.M." />
+    <input type="hidden" asp-for="Date" value="04/01/22" />
+
+    <button type="submit">8 A.M.</button>
 </form>
 
 <br />

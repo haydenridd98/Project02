@@ -29,7 +29,7 @@ namespace Project02.Models
             int day = 23;
             int hour = 8;
 
-            while (day < 27)
+            while (day < 30)
             {
                 while (hour < 21)
                 {
@@ -38,11 +38,11 @@ namespace Project02.Models
                         {
                             AppointmentId = IdCounter,
                             GroupName = null,
-                            GroupSize = null,
+                            GroupSize = 0,
                             Email = null,
                             PhoneNumber = null,
-                            Time = "8 A.M.",
-                            Date = month.ToString + ' ' + day.ToString,
+                            Time = hour.ToString(),
+                            Date = month.ToString() + '/' + day.ToString() + '/' + year.ToString(),
                             Available = true
                         }
                     );
@@ -52,18 +52,7 @@ namespace Project02.Models
                 day++;
                 hour = 8;
             }
-            mb.Entity<Appointment>().HasData(
-                new Appointment
-                {
-                    AppointmentId = 1,
-                    GroupName = null,
-                    GroupSize = 0,
-                    Email = null,
-                    PhoneNumber = null,
-                    Time = "8 A.M.",
-                    Date = "Mar 22, 2022"
-                }
-            );
+            
         }
     }
 }

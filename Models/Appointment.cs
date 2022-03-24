@@ -23,8 +23,10 @@ namespace Project02.Models
         public string Time { get; set; }
 
         public string Date { get; set; }
-
+        
+        // default available = true, until it gets reserved
         public bool Available { get; set; }
+
 
     }
 }

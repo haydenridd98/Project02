@@ -56,10 +56,10 @@ namespace Project02.Models
                 new Appointment
                 {
                     AppointmentId = 1,
-                    GroupName = "Michael Scott Fun Run for the Cure",
-                    GroupSize = 10,
-                    Email = "MichaelScott@gmail.com",
-                    PhoneNumber = "801-777-8888",
+                    GroupName = null,
+                    GroupSize = 0,
+                    Email = null,
+                    PhoneNumber = null,
                     Time = "8 A.M.",
                     Date = "Mar 22, 2022"
                 }

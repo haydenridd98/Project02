@@ -49,7 +49,7 @@ namespace Project02.Controllers
 
             apptContext.Add(apptForm);
             apptContext.SaveChanges();
-            return View();
+            return View("Index");
         }
 
     }

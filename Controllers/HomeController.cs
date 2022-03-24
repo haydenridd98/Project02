@@ -22,30 +22,25 @@ namespace Project02.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult SignUp()
         {
             return View();
         }
 
 
-
-
-        [HttpGet]
-        public IActionResult Form()
+        [HttpPost]
+        public IActionResult SignUp(Appointment appt)
         {
-            return View(new Appointment());
-        }
 
+            return View("Form", appt);
+        }
 
         [HttpPost]
-        public IActionResult Form(Appointment appt)
+        public IActionResult Form()
         {
-
-            return View("Index", appt);
+            return View();
         }
-
-
 
     }
 }

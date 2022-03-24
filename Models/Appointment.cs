@@ -12,20 +12,19 @@ namespace Project02.Models
         [Required]
         public long AppointmentId { get; set; }
 
-        [Required]
         public string GroupName { get; set; }
 
-        [Required]
         public int GroupSize { get; set; }
 
-        [Required]
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
 
-        
         public string Time { get; set; }
 
         public string Date { get; set; }
+
+        public bool Available { get; set; }
+
     }
 }

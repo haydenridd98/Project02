@@ -20,40 +20,22 @@ namespace Project02.Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            int count = 0;
             for (int i = 0; i < 90; i++ )
             {
+                
                 DateTime nextDay = DateTime.Now.Date.AddDays(i);
                 for (int h = 8; h < 21; h++)
                 {
-                    //if ()
-                    //{ 
-                    //    // figure out how to check if the date is already in the model 
-                    //}
-                    //else
-                    {
-                        mb.Entity<TimeSlot>().HasData(
-                            new TimeSlot
-                            {
-                                Start = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, h, 0, 0)
-                            });
-                    }
-
+                    count += 1;
+                    mb.Entity<TimeSlot>().HasData(
+                        new TimeSlot
+                        {
+                            ID = count,
+                            Start = new DateTime(nextDay.Year, nextDay.Month, nextDay.Day, h, 0, 0)
+                        });                    
                 }
-            }
-            mb.Entity<TimeSlot>().HasData(
-                new TimeSlot
-                {
-                    ID = 1,
-                    Start = new DateTime(2022, 3, 24, 8, 0, 0)
-                },
-                new TimeSlot
-                {
-                    ID = 2, 
-                    Start = new DateTime(2022, 3, 24, )
-                }
-
-                );
-
+            }   
         }
     }
 }

@@ -23,6 +23,35 @@ namespace Project02.Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            int IdCounter = 1;
+            int month = 3;
+            int year = 2022;
+            int day = 23;
+            int hour = 8;
+
+            while (day < 27)
+            {
+                while (hour < 21)
+                {
+                    mb.Entity<Appointment>().HasData(
+                        new Appointment
+                        {
+                            AppointmentId = IdCounter,
+                            GroupName = null,
+                            GroupSize = null,
+                            Email = null,
+                            PhoneNumber = null,
+                            Time = "8 A.M.",
+                            Date = month.ToString + ' ' + day.ToString,
+                            Available = true
+                        }
+                    );
+                    IdCounter++;
+                    hour++;
+                }
+                day++;
+                hour = 8;
+            }
             mb.Entity<Appointment>().HasData(
                 new Appointment
                 {

@@ -25,18 +25,14 @@ namespace Project02
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllersWithViews();
+            services.AddControllersWithViews();
 
-            services.AddDbContext<TempleToursContext>(options =>
+            services.AddDbContext<AppointmentContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:TempleToursConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:AppointmentConnection"]);
             });
 
-            services.AddScoped<ITempleToursRepository, EFTempleToursRepository>();
-
-            services.AddRazorPages();
-
-            services.AddServerSideBlazor();
+            services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
 
         }
 
@@ -62,12 +58,10 @@ namespace Project02
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
-
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/form/{*catchall", "/Index");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
         }
     }
 }

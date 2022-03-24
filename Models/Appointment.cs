@@ -10,18 +10,22 @@ namespace Project02.Models
     {
         [Key]
         [Required]
-        public int AppointmentID { get; set; }
+        public long AppointmentId { get; set; }
 
         [Required]
-        public DateTime Start { get; set; }
-
         public string GroupName { get; set; }
 
-        [Range(1,15,ErrorMessage = "Groups must be between 1 and 15 people.")]
+        [Required]
         public int GroupSize { get; set; }
 
+        [Required]
         public string Email { get; set; }
 
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
+
+        
+        public string Time { get; set; }
+
+        public string Date { get; set; }
     }
 }

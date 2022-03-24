@@ -10,7 +10,10 @@ namespace Project02.Models
     {
         [Key]
         [Required]
+        public int ID { get; set; }
+
+        [Required]
         public DateTime Start { get; set; }
-        public bool Open { get; set; }
+        public int? AppointmentID { get; set; }
     }
 }

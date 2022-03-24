@@ -11,16 +11,16 @@ namespace Project02.Models
         [Key]
         [Required]
         public int AppointmentID { get; set; }
-        public DateTime TimeSlot { get; set; }
+        public TimeSlot TimeSlot { get; set; }
 
-        [Required(ErrorMessage = "Enter a group name!")]
+        [Required(ErrorMessage = "Enter a group name.")]
         public string GroupName { get; set; }
 
         [Required]
-        [Range(1,15,ErrorMessage = "Groups must be between 1-15 people!")]
+        [Range(1,15,ErrorMessage = "Groups must be between 1 and 15 people.")]
         public int GroupSize { get; set; }
 
-        [Required(ErrorMessage = "Enter and email address!")]
+        [Required(ErrorMessage = "Enter an email address.")]
         public string Email { get; set; }
 
         

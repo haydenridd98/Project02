@@ -60,11 +60,18 @@ namespace Project02.Controllers
             if (ModelState.IsValid)
             {
                 repo.SaveAppointment(apptForm);
-                apptForm.Available = false;
+                if (apptForm.GroupName != null)
+                {
+                   apptForm.Available = false;
+                }
+                else
+                {
+                    apptForm.Available = true;
+                }
 
                 return RedirectToAction("Index");
             }
-            else // if invalid
+            else 
             {
                 ViewBag.AppointmentTime = repo.Appointments.Single(x => x.AppointmentId == apptForm.AppointmentId);
                 return View("Form", apptForm);

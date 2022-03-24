@@ -61,13 +61,9 @@ namespace Project02.Controllers
             {
                 repo.SaveAppointment(apptForm);
 
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.AppointmentTime = repo.Appointments.Single(x => x.AppointmentId == apptForm.AppointmentId);
-                return View("Index");
-            }
+            apptContext.Add(apptForm);
+            apptContext.SaveChanges();
+            return View();
         }
 
     }
